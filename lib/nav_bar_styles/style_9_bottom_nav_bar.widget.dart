@@ -12,7 +12,7 @@ class _BottomNavStyle9 extends StatelessWidget {
       navBarEssentials.navBarHeight == 0
           ? const SizedBox.shrink()
           : AnimatedContainer(
-              width: isSelected ? 120 : 50,
+              width: 90,
               height: height! / 1.5,
               duration: navBarEssentials.itemAnimationProperties.duration,
               curve: navBarEssentials.itemAnimationProperties.curve,
@@ -29,21 +29,20 @@ class _BottomNavStyle9 extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.only(right: 8),
-                      child: IconTheme(
-                        data: IconThemeData(
-                            size: item.iconSize,
-                            color: isSelected
-                                ? (item.activeColorSecondary ??
-                                    item.activeColorPrimary)
-                                : item.inactiveColorPrimary ??
-                                    item.activeColorPrimary),
-                        child: isSelected
-                            ? item.icon
-                            : item.inactiveIcon ?? item.icon,
-                      ),
+                    IconTheme(
+                      data: IconThemeData(
+                          size: item.iconSize,
+                          color: isSelected
+                              ? (item.activeColorSecondary ??
+                                  item.activeColorPrimary)
+                              : item.inactiveColorPrimary ??
+                                  item.activeColorPrimary),
+                      child: isSelected
+                          ? item.icon
+                          : item.inactiveIcon ?? item.icon,
                     ),
+                    if (item.title != null)
+                      const SizedBox(width: 8),
                     if (item.title == null)
                       const SizedBox.shrink()
                     else
